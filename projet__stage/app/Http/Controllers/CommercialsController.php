@@ -34,7 +34,9 @@ class CommercialsController extends Controller
             'commercial-name' => 'required',
             'commercial-email' => 'required|email',
             'commercial-phone' => 'required',
-            'commercial-address' => 'required'
+            'commercial-address' => 'required',
+            'role' => 'required',
+            'cin' => 'required'
         ]);
         
         $commercial = new Commercial();
@@ -42,6 +44,8 @@ class CommercialsController extends Controller
         $commercial->email = strip_tags($request->input('commercial-email'));
         $commercial->phone = strip_tags($request->input('commercial-phone'));
         $commercial->address = strip_tags($request->input('commercial-address'));
+        $commercial->role = strip_tags($request->input('role'));
+        $commercial->cin = strip_tags($request->input('cin'));
         $commercial->save();
         return redirect()->route('commercials.index');
     }
@@ -75,7 +79,9 @@ class CommercialsController extends Controller
             'commercial-name' => 'required',
             'commercial-email' => 'required|email',
             'commercial-phone' => 'required',
-            'commercial-address' => 'required'
+            'commercial-address' => 'required',
+            'role' => 'required',
+            'cin' => 'required'
         ]);
 
         $to_update = Commercial::findOrFail($commercial);
@@ -83,6 +89,8 @@ class CommercialsController extends Controller
         $to_update->email = strip_tags($request->input('commercial-email'));
         $to_update->phone = strip_tags($request->input('commercial-phone'));
         $to_update->address = strip_tags($request->input('commercial-address'));
+        $to_update->role = strip_tags($request->input('role'));
+        $to_update->cin = strip_tags($request->input('cin'));
         $to_update->save();
         return redirect()->route('commercials.show', $commercial);
     }

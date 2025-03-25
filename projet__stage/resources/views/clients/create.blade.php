@@ -1,182 +1,4 @@
-{{--@extends('layout')
-@section('title', 'create client')
-@section('content')
 
-        <h1 class="d-flex justify-content-center" >Ajouter Nouveau Client</h1>
-
-        <div>
-            
-            
-                <form action="{{ route('clients.store') }}" method="post">
-                    @csrf
-                    <div class="form-group">
-                        <label for="name">Nom</label>
-                        <input type="text" name="client-name" id="name" class="form-control" value="{{ old('client-name') }}">
-                        @error('client-name')
-                            <p class="text-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div class="form-group
-                    ">
-                        <label for="entreprise-name">Entreprise Name</label>
-                        <input type="text" name="entreprise-name" id="text" class="form-control" value="{{ old('entreprise-name') }}">
-                        @error('entreprise-name')
-                            <p class="text-danger">{{ $message }}</p>
-                        @enderror   
-                    </div>
-                    <div class="form-group">
-                        <label for="date-demande">date-demande</label>
-                        <input type="date" name="date-demande" id="date-demande" class="form-control" value="{{ old('date-demande') }}">
-                        @error('date-demande')
-                            <p class="text-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-
-
-                    </div>
-                    <div class="form-group
-                    ">
-                    <label for="origine-demande">Origine de Demande</label>
-                    <select name="origine-demande" id="status" class="form-control">
-                        <option value="whatsapp">WhatsApp</option>
-                        <option value="mail">mail</option>
-                        <option value="direct">direct</option>
-                    </select>
-                    @error('origine-demande')
-                        <p class="text-danger">{{$message}}</p>
-                    @enderror
-                    </div>
-
-
-
-                    <div class="form-group">
-                        <label for="contact">Contact </label>
-                        <input type="text" name="contact" id="name" class="form-control" value="{{ old('contact') }}">
-                        @error('contact')
-                            <p class="text-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-
-
-                    </div>
-                    <div class="form-group
-                    ">
-                    <label for="type-besoin">Type de besoin</label>
-                    <select name="type-besoin" id="status" class="form-control">
-                        <option value="service1">service1</option>
-                        <option value="service2">service2</option>
-                        <option value="service3">service3</option>
-                    </select>
-                    @error('type-besoin')
-                        <p class="text-danger">{{$message}}</p>
-                    @enderror
-                    </div>
-
-
-
-                    </div>
-                    <div class="form-group">
-                    <label for="categorie-besoin">Categories de besion</label>
-                    <select name="categorie-besoin" id="status" class="form-control">
-                        <option value="besoin1">besoin 1</option>
-                        <option value="besoin2">besoin 2</option>
-                        <option value="besoin3">besoin 3</option>
-                    </select>
-                    @error('categorie-besoin')
-                        <p class="text-danger">{{$message}}</p>
-                    @enderror
-                    </div>
-
-
-
-                    <div class="form-group">
-                        <label for="nature-service">Nature De Service </label>
-                        <input type="text" name="nature-service" id="name" class="form-control" value="{{ old('nature-service') }}">
-                        @error('nature-service')
-                            <p class="text-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-
-
-                    <div class="form-group">
-                        <label for="marchandiz">marchandiz </label>
-                        <input type="text" name="marchandiz" id="name" class="form-control" value="{{ old('marchandiz') }}">
-                        @error('marchandiz')
-                            <p class="text-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-
-
-                    <div class="form-group">
-                        <label for="nom-commerciale">Nom De Commerciale </label>
-                        <input type="text" name="nom-commerciale" id="name" class="form-control" value="{{ old('nom-commerciale') }}">
-                        @error('nom-commerciale')
-                            <p class="text-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-
-
-                    <div class="form-group">
-                        <label for="date-visite">Date Visite </label>
-                        <input type="date" name="date-visite" id="name" class="form-control" value="{{ old('date-visite') }}">
-                        @error('date-visite')
-                            <p class="text-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-
-
-                    </div>
-                    <div class="form-group">
-                    <label for="type-cadence">Categories de besion</label>
-                    <select name="type-cadence" id="status" class="form-control">
-                        <option value="besoin1">besoin 1</option>
-                        <option value="besoin2">besoin 2</option>
-                        <option value="besoin3">besoin 3</option>
-                    </select>
-                    @error('type-cadence')
-                        <p class="text-danger">{{$message}}</p>
-                    @enderror
-                    </div>
-
-
-
-
-                    <div class="form-group">
-                        <label for="detail-service">Address </label>
-                        <input type="text" name="client-address" id="name" class="form-control" value="{{ old('client-address') }}">
-                        @error('detail-service')
-                            <p class="text-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-
-
-                    <div class="form-group">
-                        <label for="detail-service">Detail Dervice </label>
-                        <textarea type="text" name="detail-service" id="name" class="form-control" value="{{ old('detail-service') }}"></textarea>
-                        
-                        @error('detail-service')
-                            <p class="text-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-
-                
-                    <button type="submit" class="btn btn-primary">Ajouter</button>
-                </form>
-                </div>
-
-            
-                
-        </div>
-
-@endsection--}}
 
 
 
@@ -344,6 +166,20 @@
                         @enderror
                     </div>
                 </div>
+
+                <div class="col-md-3" mt-2>
+                        <label for="type-besoin" class="form-label">intervention</label>
+                        <select name="intervention" id="status" class="form-select">
+                            <option value="interventionEnCours">intervention en cours</option>
+                            <option value="interventionTerminer">intervention terminé</option>
+                            <option value="interventionNonConfirmer ">intervention non confirmer </option>
+                        </select>
+                        @error('type-besoin')
+                            <p class="text-danger">{{$message}}</p>
+                        @enderror
+                    </div>
+
+                    
                 
                 <div class="row mb-3">
                     <div class="col-md-12">

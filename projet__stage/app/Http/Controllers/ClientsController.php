@@ -62,13 +62,13 @@ class ClientsController extends Controller
             'date-visite' => 'required',
             'type-cadence' => 'required',
             'detail-service' => 'required',
-            'client-address' => 'required'
-
+            'client-address' => 'required',
+            'intervention' => 'required'
         ]);
         
         $client = new client();
         $client->name = strip_tags($request->input('client-name'));
-        $client->entrepriseName = strip_tags($request->input('client-email'));
+        $client->entrepriseName = strip_tags($request->input('entreprise-name'));
         $client->dateDemande = strip_tags($request->input('date-demande'));
         $client->origineDemande = strip_tags($request->input('origine-demande'));
         $client->contact = strip_tags($request->input('contact'));
@@ -79,9 +79,9 @@ class ClientsController extends Controller
         $client->nomCommerciale = strip_tags($request->input('nom-commerciale'));
         $client->dateVisite = strip_tags($request->input('date-visite'));
         $client->typeCadence = strip_tags($request->input('type-cadence'));
-        $client->detailService = strip_tags($request->input('detail-service'));
         $client->address = strip_tags($request->input('client-address'));
-
+        $client->intervention = strip_tags($request->input('intervention'));
+        $client->detailService = strip_tags($request->input('detail-service'));
         $client->save();
         return redirect()->route('clients.index');
 
@@ -137,7 +137,9 @@ class ClientsController extends Controller
             'date-visite' => 'required',
             'type-cadence' => 'required',
             'detail-service' => 'required',
-            'client-address' => 'required'
+            'client-address' => 'required',
+            'intervention' => 'required'
+
         ]);
 
         $to_update = Client::findOrFail($client);
@@ -155,7 +157,7 @@ class ClientsController extends Controller
         $to_update->typeCadence = strip_tags($request->input('type-cadence'));
         $to_update->detailService = strip_tags($request->input('detail-service'));
         $to_update->address = strip_tags($request->input('client-address'));
-
+        $to_update->intervention = strip_tags($request->input('intervention'));
         $to_update->save();
         return redirect()->route('clients.show', $client);
     }

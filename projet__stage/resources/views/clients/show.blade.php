@@ -19,8 +19,8 @@
             <div class="bg-light p-4 rounded shadow-sm">
                 <div class="row mb-4">
                     <div class="col-md-8">
-                        <h2 class="border-bottom pb-2 mb-3 text-primary">{{ $client->name }}</h2>
-                        <h5 class="text-muted mb-3">{{ $client->entrepriseName }}</h5>
+                        <h2 class="border-bottom pb-2 mb-3 text-primary">Name Client : {{ $client->name }}</h2>
+                        <h5 class="text-muted mb-3">Intervention : {{ $client->intervention }}</h5>
                     </div>
                     <div class="col-md-4 text-md-end">
                         <div class="d-flex justify-content-md-end gap-2 mt-3">
@@ -42,6 +42,16 @@
                     <div class="col-md-6">
                         <table class="table table-hover">
                             <tbody>
+
+                            <tr>
+                                    <th class="bg-light" style="width: 40%">
+                                        <i class="fas fa-user me-2"></i>Entreprise Name :
+                                    </th>
+                                    <td>
+                                        <a href="mailto:{{ $client->contact }}">{{ $client->entrepriseName }}</a>
+                                    </td>
+                                </tr>
+
                                 <tr>
                                     <th class="bg-light" style="width: 40%">
                                         <i class="fas fa-user me-2"></i>Contact
@@ -74,12 +84,7 @@
                                     </th>
                                     <td>{{ $client->origineDemande }}</td>
                                 </tr>
-                                <tr>
-                                    <th class="bg-light">
-                                        <i class="fas fa-id-card me-2"></i>Nom Commercial
-                                    </th>
-                                    <td>{{ $client->nomCommerciale }}</td>
-                                </tr>
+                    
                             </tbody>
                         </table>
                     </div>
@@ -87,6 +92,12 @@
                     <div class="col-md-6">
                         <table class="table table-hover">
                             <tbody>
+                            <tr >
+                                    <th class="bg-light" >
+                                        <i class="fas fa-id-card me-2"></i>Nom Commercial
+                                    </th>
+                                    <td colspan="2">{{ $client->nomCommerciale }}</td>
+                                </tr>
                                 <tr>
                                     <th class="bg-light" style="width: 40%">
                                         <i class="fas fa-tasks me-2"></i>Type Besoin

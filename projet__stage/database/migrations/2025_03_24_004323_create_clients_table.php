@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
-
             $table->string('name');
             $table->string('entrepriseName');
             $table->date('dateDemande');
@@ -26,9 +25,9 @@ return new class extends Migration
             $table->string('nomCommerciale');
             $table->date('dateVisite');
             $table->string('typeCadence');
-            $table->string('detailService');
             $table->string('address');
-
+            $table->string('intervention');
+            $table->string('detailService');
             $table->timestamps();
         });
     }

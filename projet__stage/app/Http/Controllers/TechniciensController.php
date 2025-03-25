@@ -38,10 +38,12 @@ class TechniciensController extends Controller
             'technicien-address' => 'required',
             'technicien-speciality' => 'required',
             'technicien-experience' => 'required',
-            'technicien-status' => 'required'
+            'technicien-status' => 'required',
+            'role' => 'required',
+            'cin' => 'required'
         ]);
         
-        $technicien = new technicien();
+        $technicien = new Technicien();
         $technicien->name = strip_tags($request->input('technicien-name'));
         $technicien->email = strip_tags($request->input('technicien-email'));
         $technicien->phone = strip_tags($request->input('technicien-phone'));
@@ -49,6 +51,8 @@ class TechniciensController extends Controller
         $technicien->speciality = strip_tags($request->input('technicien-speciality'));
         $technicien->experience = strip_tags($request->input('technicien-experience'));
         $technicien->status = strip_tags($request->input('technicien-status'));
+        $technicien->role = strip_tags($request->input('role'));
+        $technicien->cin = strip_tags($request->input('cin'));
         $technicien->save();
         return redirect()->route('techniciens.index');
 
