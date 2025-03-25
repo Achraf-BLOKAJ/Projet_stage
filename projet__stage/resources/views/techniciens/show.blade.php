@@ -72,8 +72,11 @@
                                     </th>
                                     <td>{{ $technicien->speciality }}</td>
                                 </tr>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> c1885523a995663a2aaec06ecf48b63ed4cb7691
                                 <tr>
                                     <th class="bg-light">
                                         <i class="fas fa-calendar-alt me-2"></i>Cin :
@@ -88,7 +91,10 @@
                                 </tr>
                             </tbody>
                         </table>
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> c1885523a995663a2aaec06ecf48b63ed4cb7691
 @endsection
