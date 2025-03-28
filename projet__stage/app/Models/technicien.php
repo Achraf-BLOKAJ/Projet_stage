@@ -8,3 +8,13 @@ class technicien extends Model
 {
     //
 }
+
+
+// class Technicien extends Model
+// {
+//     protected $fillable = [
+//         'name', 'email', 'phone', 'address', 
+//         'speciality', 'experience', 'status', 
+//         'role', 'cin'
+//     ];
+// }

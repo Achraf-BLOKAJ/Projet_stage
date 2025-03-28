@@ -12,6 +12,7 @@
     
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm sticky-top">
     <div class="container">
+        
         <a class="navbar-brand d-flex align-items-center" href="{{ route('clients.index') }}">
             <i class="fas fa-users me-2"></i>Clients
         </a>

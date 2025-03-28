@@ -1,3 +1,4 @@
+
 @extends('layout')
 @section('title', 'show technicien')
 @section('content')
@@ -26,16 +27,21 @@
                     </div>
                     <div class="col-md-4 text-md-end">
                         <div class="d-flex justify-content-md-end gap-2 mt-3">
-                            <a href="{{ route('techniciens.edit', $technicien->id) }}" class="btn btn-primary">
-                                <i class="fas fa-edit me-2"></i>Modifier
-                            </a>
-                            <form action="{{ route('techniciens.destroy', $technicien->id) }}" method="post">
-                                @csrf    
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">
-                                    <i class="fas fa-trash me-2"></i>Supprimer
-                                </button>
-                            </form>
+                        @auth
+                            @if(auth()->user()->role == 'admin' || auth()->user()->role == 'commercial')
+                                <a href="{{ route('techniciens.edit', $technicien->id) }}" class="btn btn-primary">
+                                    <i class="fas fa-edit me-2"></i>Modifier
+                                </a>
+                            
+                                <form action="{{ route('techniciens.destroy', $technicien->id) }}" method="post">
+                                    @csrf    
+                                    @method('DELETE')
+                                    <button type="submit" onclick="return confirm('voulez vous vraiment supprimer')" class="btn btn-danger">
+                                        <i class="fas fa-trash me-2"></i>Supprimer
+                                    </button>
+                                </form>
+                            @endif
+                        @endauth
                         </div>
                     </div>
                 </div>
@@ -72,11 +78,7 @@
                                     </th>
                                     <td>{{ $technicien->speciality }}</td>
                                 </tr>
-<<<<<<< HEAD
 
-
-=======
->>>>>>> c1885523a995663a2aaec06ecf48b63ed4cb7691
                                 <tr>
                                     <th class="bg-light">
                                         <i class="fas fa-calendar-alt me-2"></i>Cin :
@@ -91,10 +93,5 @@
                                 </tr>
                             </tbody>
                         </table>
-<<<<<<< HEAD
 
-
-
-=======
->>>>>>> c1885523a995663a2aaec06ecf48b63ed4cb7691
 @endsection

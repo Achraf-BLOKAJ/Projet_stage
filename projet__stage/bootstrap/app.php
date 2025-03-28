@@ -4,7 +4,13 @@ use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 
-use App\Http\Middleware\CheckRole;
+//mise a jour
+// use App\Http\Middleware\CheckRole;
+use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\CommercialMiddleware;
+use App\Http\Middleware\TechnicienMiddleware;
+
+
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -14,8 +20,13 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
-            'auth' => \App\Http\Middleware\CheckRole::class,
-            'role' => \App\Http\Middleware\CheckRole::class,
+//mise a jour
+            // 'auth' => \App\Http\Middleware\CheckRole::class,
+            // 'role' => \App\Http\Middleware\CheckRole::class,
+
+            'admin' => AdminMiddleware::class,
+            'commercial' => CommercialMiddleware::class,
+            'Technicien' => TechnicienMiddleware::class
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

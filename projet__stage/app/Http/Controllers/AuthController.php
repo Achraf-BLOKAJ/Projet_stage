@@ -72,6 +72,8 @@ class AuthController extends Controller
     //         'email' => 'Les informations de connexion sont incorrectes.',
     //     ]);
     // }
+
+//hna
     public function login(Request $request)
     {
         $request->validate([
@@ -80,25 +82,57 @@ class AuthController extends Controller
         ]);
 
         // Tentative de connexion
-        if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
+        if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')],true)) 
+        {
             $request->session()->regenerate();
 
             // Redirection en fonction du rôle
-            $user = Auth::user();
-            if ($user->role === 'admin') {
+            $user = Auth::User();
+            if (Auth::User()->role == 'admin') {
                 return redirect()->route('clients.index');
             } elseif ($user->role === 'commercial') {
                 return redirect()->route('clients.index');
             } elseif ($user->role === 'technicien') {
                 return redirect()->route('techniciens.index');
+            }else {
+                // return redirect('login')->with('error','Not available email');
             }
         }
 
         // Si la connexion échoue
-        return back()->withErrors([
+        return redirect()->back()->withErrors([
             'email' => 'Les informations de connexion sont incorrectes.',
         ]);
     }
+//last methode 
+//     public function login(Request $request)
+// {
+//     $request->validate([
+//         'email' => 'required|string|email',
+//         'password' => 'required|string',
+//     ]);
+
+//     // Tentative de connexion
+//     if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
+//         $request->session()->regenerate();
+
+//         // Redirection en fonction du rôle
+//         $user = Auth::user();
+//         if ($user->role === 'admin') {
+//             return redirect()->route('clients.index');
+//         } elseif ($user->role === 'commercial') {
+//             return redirect()->route('clients.index');
+//         } elseif ($user->role === 'technicien') {
+//             // Use the authenticated user's ID as the technicien parameter
+//             return redirect()->route('techniciens.show', ['technicien' => $user->id]);
+//         }
+//     }
+
+//     // Si la connexion échoue
+//     return back()->withErrors([
+//         'email' => 'Les informations de connexion sont incorrectes.',
+//     ]);
+// }
 
     // Déconnexion
     public function logout(Request $request)

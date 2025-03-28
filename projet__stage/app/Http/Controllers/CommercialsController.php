@@ -4,14 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Commercial;
-
+use App\Models\User;
 class CommercialsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
+    // public function __construct(){
+    //     $this->middleware('auth');
+    //     $this->middleware('role:commercial')->only('show');
+    //     $this->middleware('role:admin');
+    // }
     public function index()
     {
+        // $users = User::where('role','commercial')->get();
+        // return view(commercial.index,compact('users'));
+
         return view('commercials.index', [
             'commercials' => Commercial::all()
         ]);

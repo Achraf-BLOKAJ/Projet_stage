@@ -5,11 +5,26 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Technicien;
 
+use App\Http\Controllers\Controller;
+
+
 class TechniciensController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // public function __construct()
+    // {
+    //     // Ensure the user is authenticated first
+    //     $this->middleware('auth');
+
+    //     // Ensure the user has the 'technicien' role only for the 'show' route
+    //     $this->middleware('role:technicien')->except('show');
+    // }
+
+    // public function __construct()
+    // {
+    //     $this->middleware(['auth', 'role:technicien'])->except('index');
+    // }
+
+
     public function index()
     {
         return view('techniciens.index', [

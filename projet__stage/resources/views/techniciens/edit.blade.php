@@ -110,20 +110,16 @@
                     <button type="submit" class="btn btn-primary">Ajouter</button>
                 </div>
             </form>
-<<<<<<< HEAD
+
         </div>
     </div>
 </div> 
 
 
-=======
->>>>>>> c1885523a995663a2aaec06ecf48b63ed4cb7691
+
         </div>
     </div>
 </div> 
 
-<<<<<<< HEAD
-=======
         </div>
->>>>>>> c1885523a995663a2aaec06ecf48b63ed4cb7691
 @endsection

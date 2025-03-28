@@ -7,6 +7,12 @@ use App\Models\Client;
 
 class ClientsController extends Controller
 {
+
+    // public function __construct(){
+    //     $this->middleware('auth');
+    //     $this->middleware('role:commercial');
+    //     $this->middleware('role:admin');
+    // }
     private static function getData(){
         return [
             ['id'=>1, 'name'=>'client1', 'email'=>'a@gmail.com', 'phone'=>'123456789', 'address'=>'casablanca'],
