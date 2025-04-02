@@ -4,32 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Technicien;
-
+use App\Models\User;
 use App\Http\Controllers\Controller;
 
 
 class TechniciensController extends Controller
 {
-    // public function __construct()
-    // {
-    //     // Ensure the user is authenticated first
-    //     $this->middleware('auth');
 
-    //     // Ensure the user has the 'technicien' role only for the 'show' route
-    //     $this->middleware('role:technicien')->except('show');
-    // }
-
-    // public function __construct()
-    // {
-    //     $this->middleware(['auth', 'role:technicien'])->except('index');
-    // }
 
 
     public function index()
     {
-        return view('techniciens.index', [
-            'techniciens' => Technicien::all()
-        ]);
+        $users = User::where('role', 'technicien')->get();
+        $techniciens = Technicien::all();
+        return view('techniciens.index', compact('users', 'techniciens'));
     }
 
     /**

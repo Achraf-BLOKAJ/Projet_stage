@@ -1,26 +1,28 @@
 @extends('layout')
-
-@section('title', 'Inscription')
-
+@section('title', 'create techniciens')
 @section('content')
+
+
 <div class="container mt-4">
-    <div class="row justify-content-center">
-        {{-- <div class="col-md-6"> --}}
-            <div class="card">
-                <div class="card-header">Inscription</div>
-                @if($errors->any())
-                    <div class="alert alert-danger">
-                    <ul>
-                        @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                        </ul>
-                    </div>
-                @endif
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register.submit') }}">
-                        @csrf
-                        <div class="row mb-3">
+    <h1 class="text-center mb-4">Ajouter Nouveau Technicien</h1>
+    
+
+    @if ($errors->any())
+            <h6>Errors : </h6>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+    @endif
+
+
+    <div class="card">
+        <div class="card-body">
+            <form action="{{ route('users.store') }}" method="post">
+                @csrf
+                
+                <div class="row mb-3">
                     <div class="col-md-6">
                         <label for="name" class="form-label">User Name</label>
                         <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}">
@@ -56,18 +58,17 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="mb-3">
                         <label class="form-label">Mot de Passe</label>
                         <input type="password" name="password" class="form-control" />
                     </div>
-                
-                    <div class="col-md-6">
+                    <div class="mb-3">
                         <label class="form-label">Confirmation de Mot de Passe</label>
                         <input type="password" name="password_confirmation" class="form-control" />
                     </div>
 
 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="origine-demande" class="form-label">Rôle</label>
                         <select name="role" id="role" class="form-select">
                             <option>Choisissez le Rôle</option>
@@ -82,8 +83,7 @@
 
 
                 <div id="technicien-form" style="display: none;">
-                <div class="row mb-3">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label for="nature-service" class="form-label">Address</label>
                         <input type="number" name="address" id="name" class="form-control" value="{{ old('address') }}">
                         @error('address')
@@ -93,7 +93,7 @@
 
 
 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="origine-demande" class="form-label">Speciality</label>
                         <select name="speciality" id="speciality" class="form-select">
                             <option value="electricien">Electricien</option>
@@ -106,7 +106,7 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="contact" class="form-label">experience</label>
                         <input type="number" name="experience" id="experience" class="form-control" value="{{ old('experience') }}">
                         @error('experience')
@@ -114,7 +114,7 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="origine-demande" class="form-label">status</label>
                         <select name="status" id="status" class="form-select">
                             <option value="Active">Active</option>
@@ -134,15 +134,10 @@
                         @enderror
                     </div>--}}
                 
-                    <div class="d-flex justify-content-end">
-                 </div>
-                    </div>
-                    
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary">Ajouter</button>
                 </div>
-                <button type="submit" class="btn btn-primary">s'inscrire</button>
-
-                    </form>
-            </div>
+            </form>
         </div>
     </div>
 </div>
@@ -157,5 +152,17 @@
             }
         });
 </script>
+@endsection
+
+
+
+
+
+
+
+
+
+
+
 
 @endsection

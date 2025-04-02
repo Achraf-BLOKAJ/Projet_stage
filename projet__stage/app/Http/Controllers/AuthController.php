@@ -11,26 +11,38 @@ class AuthController extends Controller
 {
      public function showRegistrationForm()
     {
-        // Afficher le formulaire d'inscription
+        
         return view('register');
     }
 
-    // Traiter l'inscription
+    
     public function register(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
+            'phone' => 'required|int',
+            'cin' => 'required|int',
             'role' => 'required|string|in:admin,commercial,technicien', // Validation du rôle
+            'address' => 'nullable|string|min:5|max:255',
+            'speciality' => 'nullable|in:electricien,plombier,menuisier,peintre',
+            'experience' => 'nullable|integer',
+            'status' => 'nullable|in:Active,Inactive',
         ]);
 
-        // Créer l'utilisateur
+        
         $user = User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
+            'phone'=> $request->input('phone'),
+            'cin' => $request->input('cin'),
             'role' => $request->input('role'),
+            'address'=> $request->input('address'),
+            'speciality'=> $request->input('speciality'),
+            'experience' => $request->input('experience'),
+            'status' => $request->input('status'),
         ]);
 
 
@@ -41,7 +53,7 @@ class AuthController extends Controller
         // $user->role = $request->input('role');
         // $user->save();
 
-        // Connecter l'utilisateur après l'inscription
+        
         Auth::login($user);
 
         return redirect()->route('login'); // Rediriger vers le tableau de bord
@@ -142,4 +154,63 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
         return redirect('/');
     }
+
+
+
+
+
+
+
+
+
+    public function show($id)
+    {
+        $user = User::findOrFail($id); // Trouver l'utilisateur par son ID
+        return view('users.show', compact('user')); // Renvoie la vue avec l'utilisateur
+    }
+
+
+
+
+// Méthode pour afficher le formulaire d'édition
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+        return view('users.edit', compact('user'));
+    }
+
+// Méthode pour mettre à jour l'utilisateur
+public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $id, // Éviter la validation unique sur l'email de l'utilisateur actuel
+            'phone' => 'required|int',
+            'cin' => 'required|int',
+            'role' => 'required|string|in:admin,commercial,technicien',
+            'address' => 'nullable|string|min:5|max:255',
+            'speciality' => 'nullable|in:electricien,plombier,menuisier,peintre',
+            'experience' => 'nullable|integer',
+            'status' => 'nullable|in:Active,Inactive',
+        ]);
+
+        $user = User::findOrFail($id);
+        $user->update($request->all()); // Met à jour l'utilisateur avec les données du formulaire
+
+        return redirect()->route('users.show', $id)->with('success', 'Utilisateur mis à jour avec succès');
+    }
+
+
+
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('commercials.index')->with('success', 'Utilisateur supprimé avec succès');
+    }
+
+
+
+
+
 }

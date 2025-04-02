@@ -18,7 +18,7 @@
                 </div>
 @endif
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login.submit') }}">
+                    <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>

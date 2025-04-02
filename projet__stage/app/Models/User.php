@@ -52,7 +52,13 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'cin',
         'role',
+        'address',
+        'speciality',
+        'experience',
+        'status',
     ];
 
     /**

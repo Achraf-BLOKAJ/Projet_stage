@@ -151,9 +151,9 @@
                 <div class="col-md-3" mt-2>
                         <label for="type-besoin" class="form-label">intervention</label>
                         <select name="intervention" id="status" class="form-select">
-                            <option value="interventionEnCours">intervention en cours</option>
-                            <option value="interventionTerminer">intervention terminé</option>
-                            <option value="interventionNonConfirmer ">intervention non confirmer </option>
+                            <option value="en_cour">intervention en cours</option>
+                            <option value="terminer">intervention terminé</option>
+                            <option value="non_confirmer ">intervention non confirmer </option>
                         </select>
                         @error('type-besoin')
                             <p class="text-danger">{{$message}}</p>

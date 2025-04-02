@@ -4,11 +4,29 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\CommercialsController;
 use App\Http\Controllers\TechniciensController;
+use App\Http\Controllers\InterventionController;
 use App\Http\Controllers\AuthController;
 use App\Http\Middleware\CheckRole;
 use App\Http\Middleware\CommercialMiddleware;
 use App\Http\Middleware\TechnicienMiddleware;
 use App\Http\Middleware\ClientMiddleware;
+// routes/web.php
+
+
+// Route pour afficher un utilisateur
+Route::get('users/{user}', [AuthController::class, 'show'])->name('users.show');
+
+// Route pour afficher le formulaire de modification d'un utilisateur
+Route::get('users/{user}/edit', [AuthController::class, 'edit'])->name('users.edit');
+
+// Route pour mettre à jour un utilisateur
+Route::put('users/{user}', [AuthController::class, 'update'])->name('users.update');
+
+// Route pour supprimer un utilisateur
+Route::delete('users/{user}', [AuthController::class, 'destroy'])->name('users.destroy');
+
+
+
 
 
 // Apply the middleware to the 'techniciens' resource route
@@ -31,6 +49,8 @@ Route::get('/', function () {
 Route::middleware(['auth', ClientMiddleware::class])->group(function () {
     Route::resource('clients', ClientsController::class);  // Clients can be accessed by all, but only after login
 });
+
+Route::get('/intervention',[InterventionController::class, 'index'])->name('intervention');
 
 // Route::resource('clients', ClientsController::class);
 // Route::resource('commercials', CommercialsController::class);

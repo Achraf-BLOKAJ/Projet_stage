@@ -44,7 +44,7 @@
                     </tr>
                    
 
-        <!-- Alternative avec liste -->
+        
        
                 @endforeach
             </div>

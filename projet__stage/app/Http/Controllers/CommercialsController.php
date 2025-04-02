@@ -17,10 +17,13 @@ class CommercialsController extends Controller
     {
         // $users = User::where('role','commercial')->get();
         // return view(commercial.index,compact('users'));
+        $users = User::where('role', 'commercial')->get();
+        $commercials = Commercial::all();
+        return view('commercials.index', compact('users', 'commercials'));
 
-        return view('commercials.index', [
-            'commercials' => Commercial::all()
-        ]);
+        // return view('commercials.index', [
+        //     'commercials' => Commercial::all()
+        // ]);
     }
 
     /**
@@ -59,10 +62,10 @@ class CommercialsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show( $commercial)
+    public function show( $id)
     {
         return view('commercials.show', [
-            'commercial' => Commercial::findOrFail($commercial)
+            'commercial' => Commercial::findOrFail($id)
         ]);
     }
 
